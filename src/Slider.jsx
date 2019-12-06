@@ -60,7 +60,7 @@ class Slider extends React.Component {
   onChange(state) {
     const props = this.props;
     const isNotControlled = !('value' in props);
-    const nextState = state.value > this.props.max ? {...state, value: this.props.max} : state;
+    const nextState = state.value > this.props.max ? { ...state, value: this.props.max } : state;
     if (isNotControlled) {
       this.setState(nextState);
     }
@@ -87,11 +87,11 @@ class Slider extends React.Component {
   }
 
   onEnd = (force) => {
-    const { dragging } = this.state;
+    //const { dragging } = this.state;
     this.removeDocumentEvents();
-    if (dragging || force) {
-      this.props.onAfterChange(this.getValue());
-    }
+    // if (dragging || force) {
+    //   this.props.onAfterChange(this.getValue());
+    // }
     this.setState({ dragging: false });
   }
 
