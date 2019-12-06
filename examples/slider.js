@@ -8,6 +8,7 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 const style = { width: 600, margin: 50 };
 
 function log(value) {
+  return
   console.log(value); //eslint-disable-line
 }
 
@@ -89,7 +90,7 @@ class DynamicBounds extends React.Component {
   }
   onSliderChange = (value) => {
     log(value);
-    this.setState({value});
+    this.setState({ value });
   }
   onMinChange = (e) => {
     this.setState({
@@ -108,7 +109,7 @@ class DynamicBounds extends React.Component {
   }
   render() {
     const labelStyle = { minWidth: '60px', display: 'inline-block' };
-    const inputStyle = { marginBottom: '10px'};
+    const inputStyle = { marginBottom: '10px' };
     return (
       <div>
         <label style={labelStyle}>Min: </label>
@@ -138,7 +139,7 @@ ReactDOM.render(
     </div>
     <div style={style}>
       <p>Slider reverse</p>
-      <Slider onChange={log} reverse min={20} max={60}/>
+      <Slider onChange={log} reverse min={20} max={60} />
     </div>
     <div style={style}>
       <p>Basic Slider，`step=20`</p>

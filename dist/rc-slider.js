@@ -1675,8 +1675,8 @@ function createSlider(Component) {
 
       _this.onBlur = function (e) {
         var onBlur = _this.props.onBlur;
-        // this.onEnd();
 
+        _this.onEnd();
         if (onBlur) {
           onBlur(e);
         }
@@ -2650,14 +2650,7 @@ var Slider = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
 
-    _this.onEnd = function (force) {
-      //const { dragging } = this.state;
-      _this.removeDocumentEvents();
-      // if (dragging || force) {
-      //   this.props.onAfterChange(this.getValue());
-      // }
-      _this.setState({ dragging: false });
-    };
+    _initialiseProps.call(_this);
 
     var defaultValue = props.defaultValue !== undefined ? props.defaultValue : props.min;
     var value = props.value !== undefined ? props.value : defaultValue;
@@ -2708,7 +2701,7 @@ var Slider = function (_React$Component) {
   }, {
     key: 'onStart',
     value: function onStart(position) {
-      this.setState({ dragging: true });
+      this.setState({ dragging: false });
       var props = this.props;
       var prevValue = this.getValue();
       props.onBeforeChange(prevValue);
@@ -2854,6 +2847,20 @@ Slider.propTypes = {
   max: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number
 };
 
+var _initialiseProps = function _initialiseProps() {
+  var _this3 = this;
+
+  this.onEnd = function (force) {
+    var value = _this3.state.value;
+    //const { dragging } = this.state;
+
+    _this3.removeDocumentEvents();
+    // if (dragging || force) {
+    //   this.props.onAfterChange(this.getValue());
+    // }
+    _this3.onChange({ value: value });
+  };
+};
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4__common_createSlider__["a" /* default */])(Slider));
 

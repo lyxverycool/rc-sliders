@@ -70,7 +70,7 @@ class Slider extends React.Component {
   }
 
   onStart(position) {
-    this.setState({ dragging: true });
+    this.setState({ dragging: false });
     const props = this.props;
     const prevValue = this.getValue();
     props.onBeforeChange(prevValue);
@@ -87,12 +87,13 @@ class Slider extends React.Component {
   }
 
   onEnd = (force) => {
+    const { value } = this.state
     //const { dragging } = this.state;
     this.removeDocumentEvents();
     // if (dragging || force) {
     //   this.props.onAfterChange(this.getValue());
     // }
-    this.setState({ dragging: false });
+    this.onChange({ value })
   }
 
   onMove(e, position) {
