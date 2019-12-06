@@ -89,11 +89,14 @@ class Slider extends React.Component {
   onEnd = (force) => {
     const { value } = this.state
     //const { dragging } = this.state;
+    console.log(value)
     this.removeDocumentEvents();
     // if (dragging || force) {
     //   this.props.onAfterChange(this.getValue());
     // }
-    this.onChange({ value })
+    setTimeout(() => {
+      this.onChange({ value })
+    }, 300)
   }
 
   onMove(e, position) {
